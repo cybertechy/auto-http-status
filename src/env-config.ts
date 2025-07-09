@@ -1,4 +1,4 @@
-import { LlmConfig } from './types';
+import { LlmConfig } from './types.js';
 
 let dotenvLoaded = false;
 

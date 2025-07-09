@@ -1,4 +1,4 @@
-import { RequestContext } from '../types';
+import { RequestContext } from '../types.js';
 
 /**
  * Checks the request context and input to determine a suitable HTTP status code.
@@ -11,7 +11,7 @@ import { RequestContext } from '../types';
 export function checkContextLogic(input: unknown, context: RequestContext): number | null {
   if (!(input instanceof Error) && (input === null || input === undefined)) {
     if (context.method?.toUpperCase() === 'GET' && context.params && Object.keys(context.params).length > 0) {
-      return 404;
+      return 404; // GET requests with null/undefined input and params typically mean "resource not found"
     }
   }
   

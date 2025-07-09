@@ -1,4 +1,4 @@
-import { RequestContext, LlmConfig } from '../types';
+import { RequestContext, LlmConfig } from '../types.js';
 
 export async function checkLlmAnalysis(error: Error, context: RequestContext, llmConfig: LlmConfig): Promise<number> {
   const prompt = `
