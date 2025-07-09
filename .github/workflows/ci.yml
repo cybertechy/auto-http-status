@@ -85,7 +85,7 @@ jobs:
         
     - name: Upload coverage to GitHub
       if: matrix.node-version == env.NODE_VERSION_MAIN
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: coverage-report
         path: coverage/
