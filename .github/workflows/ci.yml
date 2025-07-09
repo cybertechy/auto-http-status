@@ -146,7 +146,7 @@ jobs:
     - name: Check package size
       run: |
         echo "Checking package size..."
-        PACK_SIZE=$(npm pack --dry-run --json | jq -r '.size')
+        PACK_SIZE=$(npm pack --dry-run --json | jq -r '.[0].size')
         echo "Package size: $PACK_SIZE bytes"
         # Warn if package is larger than 100KB
         if [ "$PACK_SIZE" -gt 102400 ]; then
@@ -249,26 +249,4 @@ jobs:
     - name: Run performance tests
       run: |
         echo "🚀 Running performance tests..."
-        node -e "
-          const { determineStatusCode } = require('./dist/index.js');
-          
-          console.time('Performance Test');
-          
-          // Test various scenarios
-          const tests = [
-            { error: new Error('Not found'), expected: 404 },
-            { error: new Error('Unauthorized'), expected: 401 },
-            { data: { id: 1 }, expected: 200 },
-            { error: { status: 422 }, expected: 422 },
-          ];
-          
-          let iterations = 1000;
-          for (let i = 0; i < iterations; i++) {
-            tests.forEach(test => {
-              determineStatusCode(test.error || test.data);
-            });
-          }
-          
-          console.timeEnd('Performance Test');
-          console.log(\`✅ Completed \${iterations * tests.length} status code determinations\`);
-        "
+        npm run test:performance
