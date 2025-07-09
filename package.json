@@ -1,0 +1,34 @@
+{
+  "name": "auto-http-status",
+  "version": "1.0.0",
+  "description": "A lightweight Node.js library to automatically determine the correct HTTP status code from errors and data, with an optional AI-powered layer.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "http",
+    "status",
+    "code",
+    "error",
+    "handler",
+    "express",
+    "api",
+    "ai"
+  ],
+  "author": "Siddh Tailor",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.11.5",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.1"
+  },
+  "files": [
+    "dist"
+  ]
+}
