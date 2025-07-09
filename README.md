@@ -164,6 +164,27 @@ The main method to get a status code.
     -   `query` (`any`)
 -   **Returns:** `Promise<number>` - The determined HTTP status code.
 
+## Testing
+
+The library includes a comprehensive test suite with 94 tests covering all functionality:
+
+```bash
+# Run all tests
+npm test
+
+# Run tests with coverage report
+npm run test:coverage
+
+# Run tests in watch mode
+npm run test:watch
+```
+
+**Test Coverage:**
+- 100% statement coverage
+- 98.43% branch coverage  
+- 100% function coverage
+- 100% line coverage
+
 ## License
 
 MIT
