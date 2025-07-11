@@ -29,6 +29,18 @@ The library processes input through the following layers, stopping at the first 
 npm install auto-http-status
 ```
 
+### Module Compatibility
+
+This package supports both ES Modules (ESM) and CommonJS:
+
+```javascript
+// ES Modules (modern)
+import { AutoHttpStatus, autoHttpStatus } from 'auto-http-status';
+
+// CommonJS (traditional)
+const { AutoHttpStatus, autoHttpStatus } = require('auto-http-status');
+```
+
 ## Quick Start
 
 You can use the default, pre-configured instance for immediate use. Here is an example of an Express.js error-handling middleware.
