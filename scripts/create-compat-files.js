@@ -10,6 +10,13 @@ async function createCompatibilityFiles() {
   console.log('Creating backward compatibility files...');
   
   try {
+    // Create proper package.json files for CJS and ESM builds
+    await fs.writeJson('dist/cjs/package.json', { type: 'commonjs' }, { spaces: 2 });
+    console.log('✅ Created dist/cjs/package.json');
+    
+    await fs.writeJson('dist/esm/package.json', { type: 'module' }, { spaces: 2 });
+    console.log('✅ Created dist/esm/package.json');
+    
     // Copy the CommonJS build to the root dist for backward compatibility
     await fs.copy('dist/cjs/index.js', 'dist/index.js');
     console.log('✅ Created dist/index.js (CommonJS build)');
