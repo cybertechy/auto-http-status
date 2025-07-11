@@ -13,10 +13,11 @@
     }
   },
   "scripts": {
-    "build": "npm run build:cjs && npm run build:esm && npm run build:types",
+    "build": "npm run build:cjs && npm run build:esm && npm run build:types && npm run build:compat",
     "build:cjs": "tsc -p tsconfig.cjs.json && echo {\"type\":\"commonjs\"} > dist/cjs/package.json",
     "build:esm": "tsc -p tsconfig.esm.json && node scripts/fix-esm-imports.js && echo {\"type\":\"module\"} > dist/esm/package.json",
     "build:types": "tsc -p tsconfig.types.json",
+    "build:compat": "node scripts/create-compat-files.js",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
@@ -53,6 +54,13 @@
   "files": [
     "dist/cjs",
     "dist/esm",
-    "dist/types"
+    "dist/types",
+    "dist/index.js",
+    "dist/index.d.ts",
+    "dist/env-config.js",
+    "dist/env-config.d.ts",
+    "dist/types.js",
+    "dist/types.d.ts",
+    "dist/layers"
   ]
 }
