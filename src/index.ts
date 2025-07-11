@@ -1,10 +1,10 @@
-import { RequestContext, AutoHttpStatusConfig } from './types.js';
-import { checkDirectStatus } from './layers/l1-direct.js';
-import { checkErrorMappings } from './layers/l2-mappings.js';
-import { checkKeywordMatches } from './layers/l3-keywords.js';
-import { checkContextLogic } from './layers/l4-context.js';
-import { checkLlmAnalysis } from './layers/l5-llm.js';
-import { loadLlmConfigFromEnv } from './env-config.js';
+import { RequestContext, AutoHttpStatusConfig } from './types';
+import { checkDirectStatus } from './layers/l1-direct';
+import { checkErrorMappings } from './layers/l2-mappings';
+import { checkKeywordMatches } from './layers/l3-keywords';
+import { checkContextLogic } from './layers/l4-context';
+import { checkLlmAnalysis } from './layers/l5-llm';
+import { loadLlmConfigFromEnv } from './env-config';
 
 export class AutoHttpStatus {
   private config: AutoHttpStatusConfig;

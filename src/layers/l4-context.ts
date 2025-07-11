@@ -1,4 +1,4 @@
-import { RequestContext } from '../types.js';
+import { RequestContext } from '../types';
 
 /**
  * Checks the request context and input to determine a suitable HTTP status code.
