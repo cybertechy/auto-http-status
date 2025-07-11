@@ -20,7 +20,7 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
-    "test:performance": "node scripts/performance-test.js",
+    "test:performance": "node scripts/performance-test.mjs",
     "clean": "rimraf dist coverage",
     "prepublishOnly": "npm run clean && npm run build && npm test",
     "check": "npm run build && npm run test:coverage"

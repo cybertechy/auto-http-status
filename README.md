@@ -47,7 +47,7 @@ You can use the default, pre-configured instance for immediate use. Here is an e
 
 ```javascript
 import express from 'express';
-import { autoHttpStatus } from './src/index'; // In your project: from 'auto-http-status'
+import { autoHttpStatus } from 'auto-http-status';
 
 const app = express();
 

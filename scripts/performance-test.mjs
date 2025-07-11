@@ -14,8 +14,8 @@ const __dirname = dirname(__filename);
 
 async function loadLibrary() {
   try {
-    // Use file:// URL for Windows compatibility
-    const distPath = new URL('../dist/index.js', import.meta.url);
+    // Use file:// URL for Windows compatibility - updated for dual package structure
+    const distPath = new URL('../dist/esm/index.js', import.meta.url);
     const { autoHttpStatus } = await import(distPath);
     return { getStatus: autoHttpStatus.getStatus.bind(autoHttpStatus) };
   } catch (error) {
