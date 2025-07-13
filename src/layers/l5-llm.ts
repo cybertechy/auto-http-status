@@ -43,7 +43,8 @@ export async function checkLlmAnalysis(error: Error, context: RequestContext, ll
       }),
     });
     if (!response.ok) {
-      throw new Error(`Gemini API request failed with status ${response.status}`);
+      const errorBody = await response.text().catch(() => 'Unable to read response body');
+      throw new Error(`Gemini API request failed with status ${response.status}. Response body: ${errorBody}`);
     }
     const result = await response.json() as any;
     // Gemini response: candidates[0].content.parts[0].text
