@@ -37,8 +37,8 @@ export async function checkLlmAnalysis(error: Error, context: RequestContext, ll
           },
         ],
         generationConfig: {
-          maxOutputTokens: 5,
-          temperature: 0.0,
+          maxOutputTokens: MAX_OUTPUT_TOKENS,
+          temperature: TEMPERATURE,
         },
       }),
     });
