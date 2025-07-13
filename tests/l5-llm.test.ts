@@ -182,7 +182,8 @@ describe('Layer 5 - LLM Analysis', () => {
     it('should throw error for failed API requests', async () => {
       const mockResponse = {
         ok: false,
-        status: 401
+        status: 401,
+        text: jest.fn().mockResolvedValue('Unauthorized')
       };
       mockFetch.mockResolvedValue(mockResponse as any);
 
@@ -190,7 +191,7 @@ describe('Layer 5 - LLM Analysis', () => {
       
       await expect(checkLlmAnalysis(error, mockContext, mockConfig))
         .rejects
-        .toThrow('OpenAI API request failed with status 401');
+        .toThrow('LLM analysis failed: OpenAI API request failed with status 401');
     });
 
     it('should throw error for invalid status codes from LLM', async () => {
@@ -210,7 +211,7 @@ describe('Layer 5 - LLM Analysis', () => {
       
       await expect(checkLlmAnalysis(error, mockContext, mockConfig))
         .rejects
-        .toThrow('Failed to parse a valid status code from LLM response.');
+        .toThrow('LLM analysis failed: Invalid status code received: 999');
     });
 
     it('should throw error for non-numeric responses', async () => {
@@ -230,7 +231,7 @@ describe('Layer 5 - LLM Analysis', () => {
       
       await expect(checkLlmAnalysis(error, mockContext, mockConfig))
         .rejects
-        .toThrow('Failed to parse a valid status code from LLM response.');
+        .toThrow('LLM analysis failed: Invalid status code received: not a number');
     });
 
     it('should throw error for empty response', async () => {
@@ -250,7 +251,7 @@ describe('Layer 5 - LLM Analysis', () => {
       
       await expect(checkLlmAnalysis(error, mockContext, mockConfig))
         .rejects
-        .toThrow('Failed to parse a valid status code from LLM response.');
+        .toThrow('LLM analysis failed: Failed to extract response from OpenAI API');
     });
 
     it('should throw error for malformed response structure', async () => {
@@ -266,7 +267,7 @@ describe('Layer 5 - LLM Analysis', () => {
       
       await expect(checkLlmAnalysis(error, mockContext, mockConfig))
         .rejects
-        .toThrow('Failed to parse a valid status code from LLM response.');
+        .toThrow('LLM analysis failed: Failed to extract response from OpenAI API');
     });
 
     it('should handle network errors', async () => {

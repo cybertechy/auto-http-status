@@ -7,7 +7,7 @@ export interface RequestContext {
 }
 
 export interface LlmConfig {
-  provider: 'openai';
+  provider: string; // 'openai' or 'google'
   apiKey: string;
   model?: string;
   apiUrl?: string;
