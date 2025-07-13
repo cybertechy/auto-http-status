@@ -21,7 +21,9 @@ export async function checkLlmAnalysis(error: Error, context: RequestContext, ll
     if (!llmConfig.apiKey) {
       throw new Error('Gemini API key is missing in llmConfig.');
     }
-    const url = `${llmConfig.apiUrl}?key=${llmConfig.apiKey}`;
+    const urlObj = new URL(llmConfig.apiUrl);
+    urlObj.searchParams.append('key', llmConfig.apiKey);
+    const url = urlObj.toString();
     const response = await fetch(url, {
       method: 'POST',
       headers: {
